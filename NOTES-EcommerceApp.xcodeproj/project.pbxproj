@@ -723,7 +723,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "NOTES-EcommerceApp/NOTES-EcommerceApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V7UTH7GMGK;
+				DEVELOPMENT_TEAM = LEL252FGHH;
 				INFOPLIST_FILE = "NOTES-EcommerceApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -744,7 +744,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "NOTES-EcommerceApp/NOTES-EcommerceApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V7UTH7GMGK;
+				DEVELOPMENT_TEAM = LEL252FGHH;
 				INFOPLIST_FILE = "NOTES-EcommerceApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

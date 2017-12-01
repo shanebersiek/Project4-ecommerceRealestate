@@ -44,7 +44,7 @@ class RegisterViewController: UIViewController {
             
             
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumberTxtField.text!, uiDelegate: nil, completion: { (verificationID, error) in
-                print("big boobs")
+               
                 if error != nil {
                     print("error phone number \(String(describing: error?.localizedDescription))")
                     return

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SR8-lJ-Wh6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SR8-lJ-Wh6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -807,7 +807,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="propertyPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Rg8-lr-EPF">
-                                                    <rect key="frame" x="9" y="29" width="340" height="175"/>
+                                                    <rect key="frame" x="1" y="29" width="356" height="175"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="175" id="zD2-hy-kQr"/>
                                                     </constraints>
@@ -946,7 +946,7 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sold" translatesAutoresizingMaskIntoConstraints="NO" id="aJH-1X-mfn">
-                                                    <rect key="frame" x="306" y="30" width="40" height="40"/>
+                                                    <rect key="frame" x="314" y="30" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="trU-Jx-2OV"/>
                                                         <constraint firstAttribute="width" constant="40" id="zaf-jh-bYC"/>
@@ -956,7 +956,7 @@
                                                     <rect key="frame" x="169" y="117" width="20" height="20"/>
                                                 </activityIndicatorView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topAd" translatesAutoresizingMaskIntoConstraints="NO" id="0X6-5n-CbK">
-                                                    <rect key="frame" x="10" y="31" width="40" height="40"/>
+                                                    <rect key="frame" x="2" y="31" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="KlA-WU-Kpk"/>
                                                         <constraint firstAttribute="height" constant="40" id="bcX-Hy-WbK"/>
@@ -991,21 +991,15 @@
                                         </constraints>
                                         <size key="customSize" width="358" height="254"/>
                                         <connections>
-                                            <outlet property="bathroomCountLabel" destination="Wac-Ub-Ehu" id="DsU-C2-K57"/>
                                             <outlet property="bathroomLabel" destination="Wac-Ub-Ehu" id="1a7-c1-oNp"/>
-                                            <outlet property="bedroomCountLabel" destination="afA-V9-pPy" id="gjf-4N-eop"/>
-                                            <outlet property="bedroomLabel" destination="afA-V9-pPy" id="bkv-4w-Bca"/>
-                                            <outlet property="favoriteButton" destination="xcT-ta-qCM" id="kQt-VS-pb4"/>
                                             <outlet property="imageView" destination="Rg8-lr-EPF" id="Kiu-Ff-enP"/>
                                             <outlet property="likeButtonOutlet" destination="xcT-ta-qCM" id="5db-kb-ndS"/>
-                                            <outlet property="listingImageView" destination="Rg8-lr-EPF" id="N5Y-c2-aYC"/>
                                             <outlet property="loadingIndicator" destination="RaH-Yu-dLy" id="boF-3M-31t"/>
                                             <outlet property="parkingLabel" destination="AAP-OJ-m62" id="Qiy-r7-A2L"/>
-                                            <outlet property="parkingSpaceCountLabel" destination="AAP-OJ-m62" id="sRk-Jo-LwK"/>
                                             <outlet property="priceLabel" destination="cBt-Tr-3NW" id="Dg0-AR-idS"/>
+                                            <outlet property="propertyTitleLabel" destination="5BR-uD-w9r" id="S3J-mM-7Il"/>
                                             <outlet property="roomLabel" destination="afA-V9-pPy" id="UL4-Cs-InF"/>
                                             <outlet property="soldImageView" destination="aJH-1X-mfn" id="SiT-af-Uio"/>
-                                            <outlet property="titleLabel" destination="5BR-uD-w9r" id="612-Yc-Mvn"/>
                                             <outlet property="topAddImageView" destination="0X6-5n-CbK" id="kHR-sS-c7b"/>
                                         </connections>
                                     </collectionViewCell>

@@ -14,10 +14,10 @@ class RecentViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     var properties: [Property] = []
     
-    override func viewWillLayoutSubviews() {
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
-    
+//    override func viewWillLayoutSubviews() {
+//        collectionView.collectionViewLayout.invalidateLayout()
+//    }
+//
     
     override func viewWillAppear(_ animated: Bool) {
        //load properties
@@ -28,22 +28,24 @@ class RecentViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(PropertyCollectionViewCell.self, forCellWithReuseIdentifier: "myCell")
+//        collectionView.register(PropertyCollectionViewCell.self, forCellWithReuseIdentifier: "myCell")
         }
     
     //MARK: collectionview data source functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return properties.count
+        return properties.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("bigger boobs", properties.count)
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! PropertyCollectionViewCell
-        //sets my properties for the cell
-        print("bigger boobs", properties.count, cell)
-        print("show the title value: \(properties[0].title)")
-        //cell.generateCell(property: properties[indexPath.row])
-        cell.titleLabel.text = "hi"
+       
+        
+       // print("show the title value: \(properties[0].title)")
+        
+        ///sets my properties for the cell
+        cell.generateCell(property: properties[indexPath.row])
+//        cell.titleLabel.text = "hi"
         
         return cell
     }
