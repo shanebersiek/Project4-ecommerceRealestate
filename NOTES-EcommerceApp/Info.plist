@@ -58,5 +58,7 @@
 	<string>To add photos grant permission to access your media library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To add photos grant permission to access your photo library</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App wants to access your current location</string>
 </dict>
 </plist>

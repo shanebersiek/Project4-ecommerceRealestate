@@ -9,7 +9,7 @@
 import UIKit
 import ImagePicker
 
-class AddPropertyViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, ImagePickerDelegate {
+class AddPropertyViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, MKMapViewDelegate, ImagePickerDelegate {
    
     var yearArray: [Int] = []
     
@@ -65,6 +65,17 @@ class AddPropertyViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     var propertyImages: [UIImage] = []
     
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManagerStop()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -113,8 +124,16 @@ class AddPropertyViewController: UIViewController, UITextFieldDelegate, UIPicker
     }
    
     @IBAction func mapPinButtonPressed(_ sender: Any) {
+        //show map so the user can set location
+        let mapView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        
+        mapView.delegate = self
+        
+        self.present(mapView, animated: true, completion: nil)
     }
     @IBAction func currentLocationButtonPressed(_ sender: Any) {
+        
+        locationManagerStart()
     }
     
     
@@ -183,7 +202,10 @@ class AddPropertyViewController: UIViewController, UITextFieldDelegate, UIPicker
             if descriptionTxtView.text != "" && descriptionTxtView.text != "Description" {
                 newProperty.propertyDescription = descriptionTxtView.text
             }
-            
+            if locationCoordinates != nil {
+                newProperty.latitude = locationCoordinates!.latitude
+                newProperty.longitude = locationCoordinates!.longitude
+            }
             
             newProperty.titleDeeds = titleDeedsSwitchValue
             newProperty.centralHeating = centralHeatingSwitchValue
@@ -377,6 +399,68 @@ class AddPropertyViewController: UIViewController, UITextFieldDelegate, UIPicker
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeField = nil
     }
+    
+    //MARK: -Location manager del functions
+    
+    func locationManagerStart(){
+        if locationMannager == nil {
+            locationMannager = CLLocationManager()
+            locationMannager!.delegate = self
+            locationMannager!.desiredAccuracy = kCLLocationAccuracyBest
+            locationMannager!.requestWhenInUseAuthorization()
+        }
+        
+        locationMannager!.startUpdatingLocation()
+    }
+    
+    func locationManagerStop(){
+        
+        if locationMannager != nil {
+            locationMannager?.stopUpdatingLocation()
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("failed to get location")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        switch status  {
+        case .notDetermined: manager.requestWhenInUseAuthorization()
+            break
+        case .authorizedWhenInUse: manager.startUpdatingLocation()
+            break
+        case .authorizedAlways: manager.startUpdatingLocation()
+            break
+        case .restricted: //would be a case for like parental control
+            break
+        case .denied: locationMannager = nil
+            print("location Denied")
+            //good place to show user notification to enable location from settings
+        ProgressHUD.showError("Please enable location from settings")
+            break
+       
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        locationCoordinates = locations.last!.coordinate
+        
+    }
+    
+    //MARK: -MAPVIEWDELEGATES
+    
+    func didFinishWith(coordinate: CLLocationCoordinate2D) {
+        
+        locationCoordinates = coordinate
+        print("coordinate = \(coordinate)")
+    }
+    
+    
+    
     
     
 }//end of class
