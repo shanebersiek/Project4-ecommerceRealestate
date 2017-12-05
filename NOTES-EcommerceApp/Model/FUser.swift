@@ -274,7 +274,8 @@ func updateCurrentUser(withValues: [String: Any], withBlock: @escaping (_ succes
 
 //fetches the user from the database
 func fetchUserWith(userId: String, completion: @escaping (_ user: FUser?) -> Void){
-   let userRef = fireBaseData.child(kUSER).queryOrdered(byChild: kOBJECTID).queryEqual(toValue: userId)
+ 
+    let userRef = fireBaseData.child(kUSER).queryOrdered(byChild: kOBJECTID).queryEqual(toValue: userId)
     // listener
     userRef.observeSingleEvent(of: .value) { (snapShot) in
         

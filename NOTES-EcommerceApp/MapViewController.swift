@@ -98,8 +98,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     
-    
-    
+   
     
     
     
