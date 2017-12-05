@@ -151,12 +151,12 @@ class FUser {
         Auth.auth().createUser(withEmail: email, password: password) { (firuser, error) in
             if error != nil {
                 completion(error)
-                
+                print("error saving user")
                 return
             }
             // created a fUser object
             let fUser = FUser(_objectID: (firuser?.uid)!, _pushID: "", _createdAT: Date(), _updatedAt: Date(), _firstName: firstName, _lastName: lastName)
-            
+            print("user being saved")
             //save to user defaults
             saveUserLocaly(fUser: fUser)
             //save user to firebase
@@ -223,8 +223,11 @@ func saveUserInBackground(fuser: FUser){
 
 //MARK: save user localy using default
 func saveUserLocaly(fUser: FUser){
+    print("saved locally")
     UserDefaults.standard.set(userDictionaryFromUser(user: fUser), forKey: kCURRENTUSER)
+    print("my user model \(fUser.fullName)")
     UserDefaults.standard.synchronize()
+    print("user that was saved :\(UserDefaults.standard.object(forKey: kCURRENTUSER))")
 }
 
 
@@ -242,14 +245,15 @@ func userDictionaryFromUser(user: FUser) -> NSDictionary {
                                  //                  @escpaing is running on back ground thread
 func updateCurrentUser(withValues: [String: Any], withBlock: @escaping (_ succes: Bool)-> Void){
     
-    if UserDefaults.standard.array(forKey: kCURRENTUSER) != nil {
+    if UserDefaults.standard.object(forKey: kCURRENTUSER) != nil {
+        print("checked")
         //geting the user object that was locally stored
         let currentUser = FUser.currentUser()!
         //converting it to a NSDictionary
         let userObject = userDictionaryFromUser(user: currentUser).mutableCopy() as! NSMutableDictionary
         //? (maybe updating the values)
         userObject.setValuesForKeys(withValues)
-        
+      
         // update in fire base
         let ref = fireBaseData.child(kUSER).child(currentUser.objectID)
         ref.updateChildValues(withValues, withCompletionBlock: { (error, ref) in
@@ -258,12 +262,12 @@ func updateCurrentUser(withValues: [String: Any], withBlock: @escaping (_ succes
                 withBlock(false)
                 return
             }
-            //update in
+            //update localy
             UserDefaults.standard.set(userObject, forKey: kCURRENTUSER)
             UserDefaults.standard.synchronize()
             withBlock(true)
         })
-    }
+    }; print("\(UserDefaults.standard.array(forKey: kCURRENTUSER))")
 }
 
 

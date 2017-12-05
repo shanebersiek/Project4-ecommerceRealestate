@@ -8,9 +8,10 @@
 
 import UIKit
 
-class RecentViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class RecentViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PropertyCollectionViewCellDelegate {
   
     @IBOutlet weak var collectionView: UICollectionView!
+    var numberOfPropertiesTextField: UITextField?
     
     var properties: [Property] = []
     
@@ -33,17 +34,17 @@ class RecentViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: collectionview data source functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return properties.count 
+        return properties.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! PropertyCollectionViewCell
        
-        
-       // print("show the title value: \(properties[0].title)")
-        
+        //sets the delegate
+        cell.delegate = self
         ///sets my properties for the cell
+        
         cell.generateCell(property: properties[indexPath.row])
 //        cell.titleLabel.text = "hi"
         
@@ -79,6 +80,103 @@ class RecentViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //MARK: IB action
     @IBAction func mixerButtonpressed(_ sender: Any) {
+       
+        let alertcontroler = UIAlertController(title: "Update", message: "Set the number of properties to display", preferredStyle: .alert)
+        
+        
+        alertcontroler.addTextField { (numberOfProperties) in
+           
+            numberOfProperties.placeholder = "Number Of Properties"
+            numberOfProperties.borderStyle = .roundedRect
+            numberOfProperties.keyboardType = .numberPad
+            self.numberOfPropertiesTextField = numberOfProperties
+            
+        }
+        let cancleAction = UIAlertAction(title: "cancle", style: .cancel) { (action) in
+            
+        }
+        let updateAction = UIAlertAction(title: "update", style: .default) { (action) in
+            
+            if self.numberOfPropertiesTextField?.text != "" && self.numberOfPropertiesTextField?.text != "0" {
+                
+                ProgressHUD.show("Updating...")
+                self.loadProperties(limitNumber: Int((self.numberOfPropertiesTextField?.text)!)!)
+            }
+        }
+        
+        alertcontroler.addAction(cancleAction)
+        alertcontroler.addAction(updateAction)
+        
+        self.present(alertcontroler, animated: true, completion: nil)
     }
     
-}
+    //MARK: PropertyCollectionViewDelegate
+    
+    
+    func didClickStarButton(property: Property) {
+       
+        
+        
+        //check if we have a user
+        if FUser.currentUser() != nil {
+            //save to favorites
+        
+            let user  = FUser.currentUser()!
+            //check if the property is already in the users favorit properties
+            if user.favoriteProperties.contains(property.objectId!){
+                
+                print("property contained")
+                
+                ///finds the index of the property im deleteing
+                let index = user.favoriteProperties.index(of: property.objectId!)
+                user.favoriteProperties.remove(at: index!)
+                
+                updateCurrentUser(withValues: [kFAVORIT : user.favoriteProperties], withBlock: { (success) in
+                    
+                    if !success {
+                        print("error removing favorit")
+                    } else {
+                       
+                        self.collectionView.reloadData()
+                        ProgressHUD.showSuccess("Removed from list")
+                    }
+                })
+                
+            } else {
+                //add to favorits list
+              
+                //add propertis to favorits array
+                user.favoriteProperties.append(property.objectId!)
+                
+                //updates data in cloud
+                updateCurrentUser(withValues: [kFAVORIT : user.favoriteProperties], withBlock: { (success) in
+                
+                    if !success {
+                        print("error adding favorit")
+                    } else {
+                        
+                        self.collectionView.reloadData()
+                        ProgressHUD.showSuccess("Added to list!")
+                    }
+                })
+                
+            }
+            
+        
+        } else {
+            //show log in screen
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}//End Of Class

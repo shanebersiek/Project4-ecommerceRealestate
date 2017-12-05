@@ -10,6 +10,7 @@
 		2055BFF77D14587904C74F05 /* Pods_NOTES_EcommerceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C4C9ED015250BC330977A7 /* Pods_NOTES_EcommerceAppUITests.framework */; };
 		B95008211FBE7F9C00216C2D /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B950081E1FBE7F9C00216C2D /* ProgressHUD.bundle */; };
 		B95008221FBE7F9C00216C2D /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B95008201FBE7F9C00216C2D /* ProgressHUD.m */; };
+		B95F073C1FD5DFBC00495F98 /* IDMPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95F073D1FD5DFBC00495F98 /* IDMPhotoBrowser.framework */; };
 		B99292971FB5580C00497C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99292961FB5580C00497C69 /* AppDelegate.swift */; };
 		B992929C1FB5580C00497C69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B992929A1FB5580C00497C69 /* Main.storyboard */; };
 		B992929F1FB5580C00497C69 /* NOTES_EcommerceApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B992929D1FB5580C00497C69 /* NOTES_EcommerceApp.xcdatamodeld */; };
@@ -26,6 +27,9 @@
 		B9C8DEBD1FCF785700905F4D /* PropertyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C8DEBC1FCF785700905F4D /* PropertyCollectionViewCell.swift */; };
 		B9C8DEBF1FCF7D6800905F4D /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C8DEBE1FCF7D6800905F4D /* Property.swift */; };
 		B9C8DEC11FCFB20700905F4D /* AddPropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C8DEC01FCFB20700905F4D /* AddPropertyViewController.swift */; };
+		B9F8D3D71FD5E5B0006F93F7 /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F8D3D81FD5E5B0006F93F7 /* ImagePicker.framework */; };
+		B9F8D3DA1FD5EC52006F93F7 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8D3D91FD5EC52006F93F7 /* Downloader.swift */; };
+		B9F8D3DC1FD605CD006F93F7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F8D3DB1FD605CD006F93F7 /* CoreLocation.framework */; };
 		C3E4EB4EAA17052581315574 /* Pods_NOTES_EcommerceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBCD4347B31C16DE595A7AB0 /* Pods_NOTES_EcommerceApp.framework */; };
 		F85C57268ACEC9CBBA3C1261 /* Pods_NOTES_EcommerceAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5A8AA77B0A69D368675B6C /* Pods_NOTES_EcommerceAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +63,8 @@
 		B950081E1FBE7F9C00216C2D /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		B950081F1FBE7F9C00216C2D /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		B95008201FBE7F9C00216C2D /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		B95F073D1FD5DFBC00495F98 /* IDMPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IDMPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B95F073F1FD5E04100495F98 /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99292931FB5580C00497C69 /* NOTES-EcommerceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NOTES-EcommerceApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99292961FB5580C00497C69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B992929B1FB5580C00497C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +88,9 @@
 		B9C8DEBC1FCF785700905F4D /* PropertyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9C8DEBE1FCF7D6800905F4D /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		B9C8DEC01FCFB20700905F4D /* AddPropertyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPropertyViewController.swift; sourceTree = "<group>"; };
+		B9F8D3D81FD5E5B0006F93F7 /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9F8D3D91FD5EC52006F93F7 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		B9F8D3DB1FD605CD006F93F7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E3C4C9ED015250BC330977A7 /* Pods_NOTES_EcommerceAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NOTES_EcommerceAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBCD4347B31C16DE595A7AB0 /* Pods_NOTES_EcommerceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NOTES_EcommerceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -107,6 +116,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F8D3DC1FD605CD006F93F7 /* CoreLocation.framework in Frameworks */,
+				B9F8D3D71FD5E5B0006F93F7 /* ImagePicker.framework in Frameworks */,
+				B95F073C1FD5DFBC00495F98 /* IDMPhotoBrowser.framework in Frameworks */,
 				2055BFF77D14587904C74F05 /* Pods_NOTES_EcommerceAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +217,7 @@
 			children = (
 				B99292D31FB593F100497C69 /* Settings.swift */,
 				B99292CD1FB5702600497C69 /* Constants.swift */,
+				B9F8D3D91FD5EC52006F93F7 /* Downloader.swift */,
 			);
 			path = "Settings Folder";
 			sourceTree = "<group>";
@@ -229,6 +242,10 @@
 		F3B31A980DFD063EDF05D0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9F8D3DB1FD605CD006F93F7 /* CoreLocation.framework */,
+				B9F8D3D81FD5E5B0006F93F7 /* ImagePicker.framework */,
+				B95F073F1FD5E04100495F98 /* ImagePicker.framework */,
+				B95F073D1FD5DFBC00495F98 /* IDMPhotoBrowser.framework */,
 				EBCD4347B31C16DE595A7AB0 /* Pods_NOTES_EcommerceApp.framework */,
 				2A5A8AA77B0A69D368675B6C /* Pods_NOTES_EcommerceAppTests.framework */,
 				E3C4C9ED015250BC330977A7 /* Pods_NOTES_EcommerceAppUITests.framework */,
@@ -486,17 +503,27 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NOTES-EcommerceApp/Pods-NOTES-EcommerceApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IDMPhotoBrowser/IDMPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDMPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -545,6 +572,7 @@
 			files = (
 				B9C8DEBF1FCF7D6800905F4D /* Property.swift in Sources */,
 				B99292D41FB593F100497C69 /* Settings.swift in Sources */,
+				B9F8D3DA1FD5EC52006F93F7 /* Downloader.swift in Sources */,
 				B9C8DEB81FCF764800905F4D /* RecentViewController.swift in Sources */,
 				B99292D21FB5868800497C69 /* FUser.swift in Sources */,
 				B99292971FB5580C00497C69 /* AppDelegate.swift in Sources */,
@@ -723,7 +751,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "NOTES-EcommerceApp/NOTES-EcommerceApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LEL252FGHH;
+				DEVELOPMENT_TEAM = V7UTH7GMGK;
 				INFOPLIST_FILE = "NOTES-EcommerceApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -744,7 +772,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "NOTES-EcommerceApp/NOTES-EcommerceApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LEL252FGHH;
+				DEVELOPMENT_TEAM = V7UTH7GMGK;
 				INFOPLIST_FILE = "NOTES-EcommerceApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

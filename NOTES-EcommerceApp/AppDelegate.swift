@@ -99,6 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if pushToken != nil {
             if let playerId = userID {
+                
+                
                 UserDefaults.standard.setValue(playerId, forKey: "OneSignalId")
             } else {
                 

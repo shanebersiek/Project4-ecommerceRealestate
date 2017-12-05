@@ -7,9 +7,23 @@
 //
 
 import UIKit
+import ImagePicker
 
-class AddPropertyViewController: UIViewController {
-
+class AddPropertyViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, ImagePickerDelegate {
+   
+    var yearArray: [Int] = []
+    
+    var datePicker = UIDatePicker()
+    //pickers
+    var propertyTypePicker = UIPickerView()
+    var advertismentTypePicker = UIPickerView()
+    var yearPicker = UIPickerView()
+    
+    var locationMannager: CLLocationManager?
+    var locationCoordinates: CLLocationCoordinate2D?
+    
+    var activeField: UITextField?
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topView: UIView!
     
@@ -49,9 +63,32 @@ class AddPropertyViewController: UIViewController {
     var airConditionerSwitchValue = false
     var furnishedSwitchValue = false
     
+    var propertyImages: [UIImage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
+        
+        referenceCodeTxtField.delegate = self
+        titleTxtField.delegate = self
+        roomsTxtField.delegate = self
+        bathroomsTxtField.delegate = self
+        propertySizeTxtField.delegate = self
+        balconySizeTxtField.delegate = self
+        parkingTxtField.delegate = self
+        floorTxtField.delegate = self
+        addressTxtField.delegate = self
+        cityTxtField.delegate = self
+        countryTxtField.delegate = self
+        advertismentTypeTxtField.delegate = self
+        availableFromTxtField.delegate = self
+        buildYearTxtField.delegate = self
+        propertyTypeTxtField.delegate = self
+        priceTxtField.delegate = self
+        
+        setupYearArray()
+        setUpPickers()
+        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
        scrollView.contentSize = CGSize(width: self.view.bounds.width, height: topView.frame.size.height)
         
     }
@@ -67,6 +104,12 @@ class AddPropertyViewController: UIViewController {
         }
     }
     @IBAction func cameraButtonPressed(_ sender: Any) {
+    let imagePickerController = ImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.imageLimit = kMAXIMAGENUMBER
+        
+        present(imagePickerController, animated: true, completion: nil)
+    
     }
    
     @IBAction func mapPinButtonPressed(_ sender: Any) {
@@ -77,12 +120,25 @@ class AddPropertyViewController: UIViewController {
     
     //MARK: helper functions
     
+    func setupYearArray(){
+       
+        for i in 1800...2003{
+            yearArray.append(i)
+        }
+        yearArray.reverse()
+    }
+    
+    
+    
+    
    func save(){
         
         if titleTxtField.text != "" && referenceCodeTxtField.text != "" && advertismentTypeTxtField.text != "" && propertyTypeTxtField.text != "" && priceTxtField.text != ""{
             
             //create new property
             var newProperty = Property()
+            
+            ProgressHUD.show("Saving...")
             
             newProperty.referenceCode = referenceCodeTxtField.text!
             newProperty.ownerId = user!.objectID
@@ -137,9 +193,23 @@ class AddPropertyViewController: UIViewController {
             newProperty.isFurnished = furnishedSwitchValue
             
             //check for property images
+            if propertyImages.count != 0 {
+                
+                print("uploading")
+                uploadImages(images: propertyImages, userId: (user?.objectID)!, referanceNumber: newProperty.referenceCode!, withBlock: { (linkString) in
+                    newProperty.imageLinks = linkString
+                    newProperty.saveProperty()
+                    ProgressHUD.showSuccess("saved!")
+                    self.dismissView()
+                })
+                
+            } else {
+                newProperty.saveProperty()
+                ProgressHUD.showSuccess("saved!")
+                self.dismissView()
+            }
             
-            newProperty.saveProperty()
-            ProgressHUD.showSuccess("saved!")
+            
             
         } else {
             
@@ -147,6 +217,10 @@ class AddPropertyViewController: UIViewController {
         }
     }
     
+    func dismissView(){
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainVC") as! UITabBarController
+        self.present(vc, animated: true, completion: nil)
+    }
     
     //switches
     @IBAction func titleDeedSwitched(_ sender: Any) {
@@ -169,8 +243,140 @@ class AddPropertyViewController: UIViewController {
         furnishedSwitchValue = !furnishedSwitchValue
     }
     
+    //MARK: -Image Picker Delegate
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        print("wrapper")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        
+        propertyImages = images
+        print("number of images \(propertyImages.count)")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        print("cancel")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: -picker view
     
     
+    func setUpPickers() {
+        
+        yearPicker.delegate = self
+        propertyTypePicker.delegate = self
+        advertismentTypePicker.delegate = self
+        datePicker.datePickerMode = .date
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let flexibleBar = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        let DoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonPressed))
+        
+        toolBar.setItems([flexibleBar, DoneButton], animated: true)
+        
+        buildYearTxtField.inputAccessoryView = toolBar
+        buildYearTxtField.inputView = yearPicker
+        
+        availableFromTxtField.inputAccessoryView = toolBar
+        availableFromTxtField.inputView = datePicker
+        
+        propertyTypeTxtField.inputAccessoryView = toolBar
+        propertyTypeTxtField.inputView = propertyTypePicker
+        
+        advertismentTypeTxtField.inputAccessoryView = toolBar
+        advertismentTypeTxtField.inputView = advertismentTypePicker
+    }
+    
+    @objc func doneButtonPressed(){
+        
+        self.view.endEditing(true)
+    }
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if pickerView == propertyTypePicker{
+           return propertyTypes.count
+        }
+        
+        if pickerView == advertismentTypePicker{
+            return advertismentTypes.count
+        }
+        
+        if pickerView == yearPicker{
+            return yearArray.count
+        }
+        
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if pickerView == propertyTypePicker{
+            return propertyTypes[row]
+        }
+        
+        if pickerView == advertismentTypePicker{
+            return advertismentTypes[row]
+        }
+        
+        if pickerView == yearPicker{
+            return "\(yearArray[row])"
+        }
+        
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       
+        var rowValue = row
+        
+        if pickerView == propertyTypePicker{
+            
+            if rowValue == 0 { rowValue = 1 }
+            propertyTypeTxtField.text = propertyTypes[rowValue]
+        }
+        
+        if pickerView == advertismentTypePicker{
+             if rowValue == 0 { rowValue = 1 }
+            advertismentTypeTxtField.text = advertismentTypes[rowValue]
+        }
+        
+        if pickerView == yearPicker{
+            buildYearTxtField.text = "\(yearArray[row])"
+        }
+    }
+    
+    @objc func dateChanged(_ sender: UIDatePicker){
+        
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: sender.date)
+        
+        
+        if activeField == availableFromTxtField {
+            availableFromTxtField.text = "\(components.month!)/\(components.day!)/\(components.year!)"
+        }
+        
+    }
+    
+    //MARK: UITextField delegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    }
     
     
 }//end of class

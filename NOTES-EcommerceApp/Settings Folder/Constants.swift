@@ -11,8 +11,13 @@ import Firebase
 
 var backEndless = Backendless.sharedInstance()
 var fireBaseData = Database.database().reference()
+
+let propertyTypes = ["Select", "Appartment", "house", "villa", "Land", "Condo"]
+let advertismentTypes = ["Select", "Sale", "Rent", "Exchange"]
+
 //MARK: IDS AND KEYS
 public let kONESIGNALID = "efcd12eb-9d4a-4c9c-9a04-98d52351f18c"
+public let kFILEREFERENCE = "gs://note-ecommerceapp.appspot.com"
 
 //F-User
 public let kOBJECTID = "objectID"
@@ -50,7 +55,8 @@ public let kBUYERID = "buyerId"
 public let kAGENTID = "agentId"
 
 
-
+//push
+public let kDEVICEID = "deviceId"
 
 
 

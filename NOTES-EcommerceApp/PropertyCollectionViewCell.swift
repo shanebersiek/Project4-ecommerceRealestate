@@ -8,6 +8,12 @@
 
 import UIKit
 
+@objc protocol PropertyCollectionViewCellDelegate {
+    
+    @objc optional func didClickStarButton(property: Property)
+    @objc optional func didClickMenuButton(property: Property)
+}
+
 class PropertyCollectionViewCell: UICollectionViewCell {
     //MARK: -IB Elements
    
@@ -24,8 +30,15 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var topAddImageView: UIImageView!
     @IBOutlet weak var soldImageView: UIImageView!
     
+    var delegate: PropertyCollectionViewCellDelegate?
+    
+    var property: Property!
+    
     //so i can set the properties in my cell cleaner
     func generateCell(property: Property){
+        
+        ///made a variable in the cell so can pass the data object i get back into, and use the data in this cell
+        self.property = property
         
         guard let title = property.title else {return}
         propertyTitleLabel.text = title
@@ -34,10 +47,61 @@ class PropertyCollectionViewCell: UICollectionViewCell {
         parkingLabel.text = "\(property.parking)"
         priceLabel.text = "\(property.price)"
         priceLabel.sizeToFit()
+        
+        //topAdd
+        if property.inTopUntil != nil && property.inTopUntil! > Date(){
+            topAddImageView.isHidden = false
+        } else {
+            topAddImageView.isHidden = true 
+        }
+       
+        //liked property
+        if self.likeButtonOutlet != nil {
+            
+            if FUser.currentUser() != nil && FUser.currentUser()!.favoriteProperties.contains(property.objectId!){
+                self.likeButtonOutlet.setImage(#imageLiteral(resourceName: "starFilled"), for: .normal)
+            } else {
+                
+                self.likeButtonOutlet.setImage(#imageLiteral(resourceName: "star"), for: .normal)
+            }
+            
+            
+        }
+        
+        //sold
+        if property.isSold{
+            soldImageView.isHidden = false
+        } else {
+            soldImageView.isHidden = true
+        }
+        
+        //image
+        if property.imageLinks != "" && property.imageLinks != nil {
+            
+            //download images
+            downloadImages(urls: property.imageLinks!, withBlock: { (images) in
+                
+                
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.imageView.image = images.first!
+                
+            })
+            
+        } else {
+            self.imageView.image = #imageLiteral(resourceName: "propertyPlaceholder")
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+            
+        }
+        
     }
     
     //MARK: IB ACTIONS
     
     @IBAction func starButtonPressed(_ sender: Any) {
+        print("star button print")
+        delegate!.didClickStarButton!(property: property)
     }
-}
+    
+}//End Of Class

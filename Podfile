@@ -12,6 +12,9 @@ target 'NOTES-EcommerceApp' do
    pod 'Firebase/Storage'
    pod 'Backendless'
    pod 'OneSignal'
+   pod 'ImagePicker'
+   pod 'IDMPhotoBrowser'
+   
    
   target 'NOTES-EcommerceAppTests' do
     inherit! :search_paths
