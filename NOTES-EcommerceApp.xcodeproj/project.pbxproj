@@ -10,6 +10,7 @@
 		2055BFF77D14587904C74F05 /* Pods_NOTES_EcommerceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C4C9ED015250BC330977A7 /* Pods_NOTES_EcommerceAppUITests.framework */; };
 		B95008211FBE7F9C00216C2D /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B950081E1FBE7F9C00216C2D /* ProgressHUD.bundle */; };
 		B95008221FBE7F9C00216C2D /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B95008201FBE7F9C00216C2D /* ProgressHUD.m */; };
+		B952BFCF1FD87DEC00F964AC /* PropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BFCE1FD87DEC00F964AC /* PropertyViewController.swift */; };
 		B9538E8D1FD6283400F35D42 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9538E8C1FD6283400F35D42 /* MapViewController.swift */; };
 		B95F073C1FD5DFBC00495F98 /* IDMPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95F073D1FD5DFBC00495F98 /* IDMPhotoBrowser.framework */; };
 		B99292971FB5580C00497C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99292961FB5580C00497C69 /* AppDelegate.swift */; };
@@ -64,6 +65,7 @@
 		B950081E1FBE7F9C00216C2D /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		B950081F1FBE7F9C00216C2D /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		B95008201FBE7F9C00216C2D /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		B952BFCE1FD87DEC00F964AC /* PropertyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyViewController.swift; sourceTree = "<group>"; };
 		B9538E8C1FD6283400F35D42 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B95F073D1FD5DFBC00495F98 /* IDMPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IDMPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95F073F1FD5E04100495F98 /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +181,7 @@
 				B950081C1FBE790E00216C2D /* NOTES-EcommerceApp.entitlements */,
 				B992929A1FB5580C00497C69 /* Main.storyboard */,
 				B99292961FB5580C00497C69 /* AppDelegate.swift */,
+				B952BFCE1FD87DEC00F964AC /* PropertyViewController.swift */,
 				B9C8DEB71FCF764800905F4D /* RecentViewController.swift */,
 				B9C8DEC01FCFB20700905F4D /* AddPropertyViewController.swift */,
 				B9538E8C1FD6283400F35D42 /* MapViewController.swift */,
@@ -580,6 +583,7 @@
 				B99292D21FB5868800497C69 /* FUser.swift in Sources */,
 				B99292971FB5580C00497C69 /* AppDelegate.swift in Sources */,
 				B9538E8D1FD6283400F35D42 /* MapViewController.swift in Sources */,
+				B952BFCF1FD87DEC00F964AC /* PropertyViewController.swift in Sources */,
 				B95008221FBE7F9C00216C2D /* ProgressHUD.m in Sources */,
 				B992929F1FB5580C00497C69 /* NOTES_EcommerceApp.xcdatamodeld in Sources */,
 				B99292CE1FB5702600497C69 /* Constants.swift in Sources */,
