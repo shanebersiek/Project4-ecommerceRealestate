@@ -14,6 +14,7 @@
 		B952BFD11FD8B38500F964AC /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BFD01FD8B38500F964AC /* FavoriteViewController.swift */; };
 		B9538E8D1FD6283400F35D42 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9538E8C1FD6283400F35D42 /* MapViewController.swift */; };
 		B95F073C1FD5DFBC00495F98 /* IDMPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95F073D1FD5DFBC00495F98 /* IDMPhotoBrowser.framework */; };
+		B97874EA1FD9D79000E2FDC0 /* MyPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97874E91FD9D79000E2FDC0 /* MyPropertiesViewController.swift */; };
 		B99292971FB5580C00497C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99292961FB5580C00497C69 /* AppDelegate.swift */; };
 		B992929C1FB5580C00497C69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B992929A1FB5580C00497C69 /* Main.storyboard */; };
 		B992929F1FB5580C00497C69 /* NOTES_EcommerceApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B992929D1FB5580C00497C69 /* NOTES_EcommerceApp.xcdatamodeld */; };
@@ -71,6 +72,7 @@
 		B9538E8C1FD6283400F35D42 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B95F073D1FD5DFBC00495F98 /* IDMPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IDMPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95F073F1FD5E04100495F98 /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B97874E91FD9D79000E2FDC0 /* MyPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPropertiesViewController.swift; sourceTree = "<group>"; };
 		B99292931FB5580C00497C69 /* NOTES-EcommerceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NOTES-EcommerceApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99292961FB5580C00497C69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B992929B1FB5580C00497C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,6 +157,34 @@
 			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
+		B97874EB1FD9D83300E2FDC0 /* Main View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B952BFD01FD8B38500F964AC /* FavoriteViewController.swift */,
+				B97874E91FD9D79000E2FDC0 /* MyPropertiesViewController.swift */,
+				B9C8DEB71FCF764800905F4D /* RecentViewController.swift */,
+				B9C8DEC01FCFB20700905F4D /* AddPropertyViewController.swift */,
+			);
+			path = "Main View Controllers";
+			sourceTree = "<group>";
+		};
+		B97874EC1FD9D87500E2FDC0 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B9C8DEBC1FCF785700905F4D /* PropertyCollectionViewCell.swift */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		B97874ED1FD9D89300E2FDC0 /* Secondary Views */ = {
+			isa = PBXGroup;
+			children = (
+				B952BFCE1FD87DEC00F964AC /* PropertyViewController.swift */,
+				B9538E8C1FD6283400F35D42 /* MapViewController.swift */,
+			);
+			path = "Secondary Views";
+			sourceTree = "<group>";
+		};
 		B992928A1FB5580C00497C69 = {
 			isa = PBXGroup;
 			children = (
@@ -183,14 +213,11 @@
 				B950081C1FBE790E00216C2D /* NOTES-EcommerceApp.entitlements */,
 				B992929A1FB5580C00497C69 /* Main.storyboard */,
 				B99292961FB5580C00497C69 /* AppDelegate.swift */,
-				B952BFCE1FD87DEC00F964AC /* PropertyViewController.swift */,
-				B952BFD01FD8B38500F964AC /* FavoriteViewController.swift */,
-				B9C8DEB71FCF764800905F4D /* RecentViewController.swift */,
-				B9C8DEC01FCFB20700905F4D /* AddPropertyViewController.swift */,
-				B9538E8C1FD6283400F35D42 /* MapViewController.swift */,
-				B9C8DEBC1FCF785700905F4D /* PropertyCollectionViewCell.swift */,
-				B9C8DEBB1FCF769300905F4D /* Register */,
+				B97874EB1FD9D83300E2FDC0 /* Main View Controllers */,
+				B97874ED1FD9D89300E2FDC0 /* Secondary Views */,
 				B9C8DEBA1FCF768B00905F4D /* Model */,
+				B97874EC1FD9D87500E2FDC0 /* Custom Cells */,
+				B9C8DEBB1FCF769300905F4D /* Register */,
 				B9C8DEB91FCF766700905F4D /* Settings Folder */,
 				B99292A01FB5580C00497C69 /* Assets.xcassets */,
 				B99292A21FB5580C00497C69 /* LaunchScreen.storyboard */,
@@ -589,6 +616,7 @@
 				B9538E8D1FD6283400F35D42 /* MapViewController.swift in Sources */,
 				B952BFCF1FD87DEC00F964AC /* PropertyViewController.swift in Sources */,
 				B95008221FBE7F9C00216C2D /* ProgressHUD.m in Sources */,
+				B97874EA1FD9D79000E2FDC0 /* MyPropertiesViewController.swift in Sources */,
 				B992929F1FB5580C00497C69 /* NOTES_EcommerceApp.xcdatamodeld in Sources */,
 				B99292CE1FB5702600497C69 /* Constants.swift in Sources */,
 				B9C8DEBD1FCF785700905F4D /* PropertyCollectionViewCell.swift in Sources */,

@@ -91,7 +91,7 @@ class PropertyViewController: UIViewController {
         for i in 0..<imageArray.count{
             
             let imageView = UIImageView()
-           // if imageArray[0] == #imageLiteral(resourceName: "propertyPlaceholder") { print("great baby nut sack")}
+         
             imageView.image = imageArray[i]
             imageView.contentMode = .scaleAspectFit
             

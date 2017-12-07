@@ -75,8 +75,9 @@ class RecentViewController: UIViewController, UICollectionViewDelegate, UICollec
                
                 self.properties = allProperties as! [Property]
                 print("test loadProperties number of properties: \(self.properties.count) the property object = \(self.properties) th property title = \(self.properties[0].title)")
-                self.collectionView.reloadData()
                 
+                self.collectionView.reloadData()
+                ProgressHUD.dismiss()
             }
         }
     }
@@ -105,6 +106,7 @@ class RecentViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 ProgressHUD.show("Updating...")
                 self.loadProperties(limitNumber: Int((self.numberOfPropertiesTextField?.text)!)!)
+                
             }
         }
         

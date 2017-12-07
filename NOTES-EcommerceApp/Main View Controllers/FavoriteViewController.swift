@@ -27,6 +27,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
        
+        //checks if we have user before loading properties
         if !isUserIsLoggedIn(viewController: self) {
             return
         } else {

@@ -84,7 +84,7 @@ class PropertyCollectionViewCell: UICollectionViewCell {
                 
                 self.loadingIndicator.stopAnimating()
                 self.loadingIndicator.isHidden = true
-                self.imageView.image = images.first!
+                self.imageView.image = images.first ?? #imageLiteral(resourceName: "propertyPlaceholder")
                 
             })
             
@@ -103,5 +103,19 @@ class PropertyCollectionViewCell: UICollectionViewCell {
         print("star button print")
         delegate!.didClickStarButton!(property: property)
     }
+    
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        delegate!.didClickMenuButton!(property: property)
+        }
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
     
 }//End Of Class
