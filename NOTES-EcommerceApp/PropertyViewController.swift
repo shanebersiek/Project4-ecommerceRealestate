@@ -64,10 +64,13 @@ class PropertyViewController: UIViewController {
     
 //    //MARK: -Helpers
     func getPropertyImages(){
-        if property.imageLinks != "" && property.imageLinks != nil {
+        if property.imageLinks != "" && property.imageLinks != nil  {
             
             downloadImages(urls: property.imageLinks!, withBlock: { (images) in
+               
+               
                 self.imageArray = images as! [UIImage]
+               
                 self.setSlideShow()
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
@@ -83,9 +86,12 @@ class PropertyViewController: UIViewController {
     
     func setSlideShow(){
         
+        
+        
         for i in 0..<imageArray.count{
             
             let imageView = UIImageView()
+           // if imageArray[0] == #imageLiteral(resourceName: "propertyPlaceholder") { print("great baby nut sack")}
             imageView.image = imageArray[i]
             imageView.contentMode = .scaleAspectFit
             

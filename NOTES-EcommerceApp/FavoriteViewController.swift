@@ -12,6 +12,7 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     
     
+    @IBOutlet weak var noPropertyLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var properties: [Property] = []
@@ -25,7 +26,14 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadProperties()
+       
+        if !isUserIsLoggedIn(viewController: self) {
+            return
+        } else {
+             loadProperties()
+        }
+        
+       
     }
     
     
@@ -103,10 +111,51 @@ class FavoriteViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
             })
         } else {
+            self.noPropertyLabel.isHidden = false
             self.collectionView.reloadData()
         }
     }
     
-    
+    //MARK: property collectionView Delegate
+    func didClickStarButton(property: Property) {
+        if FUser.currentUser() != nil {
+            //we have a user
+            let user = FUser.currentUser()!
+            
+            if user.favoriteProperties.contains(property.objectId!){
+                //remove from list else add to list
+                  ///makes an index to the property i want to remove
+                let index = user.favoriteProperties.index(of: property.objectId!)
+                user.favoriteProperties.remove(at: index!)
+                
+                updateCurrentUser(withValues: [kFAVORIT : user.favoriteProperties], withBlock: { (success) in
+                    
+                    if !success {
+                        print("error removing property")
+                    } else {
+                        self.loadProperties()
+                        ProgressHUD.showSuccess("removed from list")
+                    }
+                })
+            } else {
+                user.favoriteProperties.append(property.objectId!)
+                updateCurrentUser(withValues: [kFAVORIT : user.favoriteProperties], withBlock: { (success) in
+                    
+                    if !success {
+                        print("error adding property")
+                    } else {
+                       
+                        self.loadProperties()
+                        ProgressHUD.showSuccess("Property added to list from list")
+                    }
+                })
+            }
+            
+        } else {
+            // no current user
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegsisterView") as! RegisterViewController
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
     
 }

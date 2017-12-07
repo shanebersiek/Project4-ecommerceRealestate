@@ -295,6 +295,19 @@ func fetchUserWith(userId: String, completion: @escaping (_ user: FUser?) -> Voi
     }
 }
 
+///MARK: CHECKS IF USER IS LOGGED IN else TAKES THEM TO LOGG IN SCREEN
+func isUserIsLoggedIn(viewController: UIViewController)-> Bool{
+    
+    if FUser.currentUser() != nil {
+        return true
+    } else {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegsisterView") as! RegisterViewController
+        
+        viewController.present(vc, animated: true, completion: nil)
+        return false
+    }
+    
+}
 
 //MARK: OneSignal
 
