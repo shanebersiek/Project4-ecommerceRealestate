@@ -56,7 +56,7 @@ class RecentViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //show property
-        let propertyView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PropertyView") as! PropertyViewController
+        let propertyView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PropertyViewController") as! PropertyViewController
         ///passes the property from my properties array on this page too my property var in propertiesViewController
         propertyView.property = properties[indexPath.row]
         self.present(propertyView, animated: true, completion: nil)
